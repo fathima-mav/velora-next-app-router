@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import type { ReactNode } from "react"
 import "./globals.css"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
@@ -9,7 +10,7 @@ import LoadingScreen from "@/components/LoadingScreen"
 import CartDrawer from "@/components/CartDrawer"
 import { SearchProvider } from "@/context/SearchContext"
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -27,10 +28,10 @@ export default function RootLayout({ children }) {
 
         {!loading && (
           <CartProvider>
-             <SearchProvider>
-            <Navbar />
+            <SearchProvider>
+              <Navbar />
               <CartDrawer />
-            <main className="min-h-screen">{children}</main>
+              <main className="min-h-screen">{children}</main>
             </SearchProvider>
             <Footer />
           </CartProvider>
